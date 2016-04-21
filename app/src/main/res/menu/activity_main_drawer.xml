@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_main"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_issues"
+            android:icon="@drawable/ic_issues"
+            android:title="@string/navigation_drawer_issues" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_map"
+            android:title="@string/navigation_drawer_map"
+            />
+    </group>
+
+    <item
+        android:id="@+id/nav_signin"
+        android:title="@string/navigation_drawer_signin"/>
+
+
+</menu>

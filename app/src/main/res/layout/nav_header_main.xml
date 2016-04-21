@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/nav_header_layout"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_header_height"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/nav_header_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/nav_header_content"/>
+
+</LinearLayout>

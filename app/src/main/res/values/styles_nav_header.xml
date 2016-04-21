@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Header layout -->
+    <style name="nav_header_layout">
+        <item name="android:background">@color/headerBackgroundColor</item>
+        <item name="android:paddingBottom">@dimen/activity_vertical_margin</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingTop">@dimen/activity_vertical_margin</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <!-- Header content -->
+    <style name="nav_header_content">
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

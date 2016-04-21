@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#557cac</color>
+    <color name="colorPrimaryDark">#446389</color>
+    <color name="colorAccent">@android:color/white</color>
+    <color name="headerBackgroundColor">#557CAC</color>
+    <color name="colorFloatButton">#ff9c26</color>
+
+    <!-- TabView colors -->
+    <color name="transparent">#00000000</color>
+    <color name="tab_highlight">#ff9ecfbf</color>
+	
+	<!-- Details activity -->
+	<color name="colorStatusBackground">#F89900</color>
+    <color name="colorStatusText">#FFFFFF</color>
+</resources>

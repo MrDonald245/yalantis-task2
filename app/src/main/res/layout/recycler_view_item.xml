@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- I used extra layout to present margins in a root element for ListView
+     because it ignores them -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <!-- The only reason why I didn't use a RelativeLayout is vertical separator.
+         I don't know why, but it isn't work in RelativeLayout-->
+    <LinearLayout
+        style="@style/recycler_item_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
+
+
+        <!-- Issue and likes icons column -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="21dp"
+            android:orientation="vertical">
+
+            <!-- Issue icon  -->
+            <ImageView
+                android:id="@+id/iv_icon_issue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical" />
+
+            <!-- Layout for Likes -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:gravity="bottom"
+                android:orientation="horizontal">
+
+                <!-- Likes icon -->
+                <ImageView
+                    android:id="@+id/iv_likes_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="3dp" />
+
+                <!-- Likes value -->
+                <TextView
+                    style="@style/recycler_likes_value"
+                    android:id="@+id/tv_likes_value"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!-- Separator -->
+        <View style="@style/recycler_item_vertical_separator" />
+
+        <!-- Header and other values column -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="21dp"
+            android:orientation="vertical">
+
+            <!-- Header issue -->
+            <TextView
+                style="@style/recycler_item_header"
+                android:id="@+id/tv_header_issue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <!-- Address -->
+            <TextView
+                style="@style/small_text_bold_gray"
+                android:id="@+id/tv_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginTop="10dp" />
+
+            <!-- Horizontal Layout for date and days -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <!-- Date -->
+                <TextView
+                    style="@style/small_text_bold_gray"
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <!-- Days -->
+                <TextView
+                    style="@style/small_text_bold_gray"
+                    android:id="@+id/tv_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="right" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

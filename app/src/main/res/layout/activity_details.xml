@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        style="@style/root_element"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_padding"
+        android:paddingRight="@dimen/activity_padding"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="eugene.task.MainActivity">
+
+        <!-- Company name -->
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/header"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:onClick="onShowToast"
+            android:text="@string/company_name" />
+
+        <!-- Status -->
+        <TextView
+            android:id="@+id/tvStatus"
+            style="@style/status"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast"
+            android:text="@string/status_on" />
+
+        <!-- Separator -->
+        <View
+            style="@style/separator"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+        <!-- Created -->
+        <LinearLayout
+            style="@style/content_block"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements">
+
+            <!-- Created label-->
+            <TextView
+                android:id="@+id/tvCreated"
+                style="@style/content_label"
+                android:onClick="onShowToast"
+                android:text="@string/created" />
+
+            <!-- Created date -->
+            <TextView
+                android:id="@+id/tvCreatedDate"
+                style="@style/content_data"
+                android:onClick="onShowToast"
+                android:text="@string/created_value"/>
+
+        </LinearLayout>
+
+
+        <!-- Separator -->
+        <View
+            style="@style/separator"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+        <!-- Registraited -->
+        <LinearLayout
+            style="@style/content_block"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements">>
+
+            <!-- Registraited label -->
+            <TextView
+                android:id="@+id/tvRegistraited"
+                style="@style/content_label"
+                android:onClick="onShowToast"
+                android:text="@string/registraited" />
+
+            <!-- Registraited date -->
+            <TextView
+                android:id="@+id/tvRegistraitedDate"
+                style="@style/content_data"
+                android:onClick="onShowToast"
+                android:text="@string/registraited_value"/>
+
+        </LinearLayout>
+
+        <!-- Separator -->
+        <View
+            style="@style/separator"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+        <!-- Solve -->
+        <LinearLayout
+            style="@style/content_block"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements">>
+
+            <!-- Solve label -->
+            <TextView
+                android:id="@+id/tvSolve"
+                style="@style/content_label"
+                android:onClick="onShowToast"
+                android:text="@string/solve" />
+
+            <!-- Solve date -->
+            <TextView
+                android:id="@+id/tvSolveDate"
+                style="@style/content_data"
+                android:onClick="onShowToast"
+                android:text="@string/solve_value"/>
+
+        </LinearLayout>
+
+        <!-- Separator -->
+        <View
+            style="@style/separator"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+        <!-- Responsible -->
+        <LinearLayout
+            style="@style/content_block"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements">>
+
+            <!-- Responsible label -->
+            <TextView
+                android:id="@+id/tvResponsible"
+                style="@style/content_label"
+                android:onClick="onShowToast"
+                android:text="@string/responsible" />
+
+            <!-- Responsible value -->
+            <TextView
+                android:id="@+id/tvResponsibleDate"
+                style="@style/content_data"
+                android:onClick="onShowToast"
+                android:text="@string/responsible_value" />
+
+        </LinearLayout>
+
+        <!-- Separator -->
+        <View
+            style="@style/separator"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+        <!-- Caption -->
+        <TextView
+            android:id="@+id/tvCaption"
+            style="@style/caption"
+            android:layout_marginBottom="@dimen/padding_among_elements"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast"
+            android:text="@string/caption_value"/>
+
+        <!-- Images in RecycleView -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rvPhotos"
+            style="@style/recycler_view"
+            android:layout_marginTop="@dimen/padding_among_elements"
+            android:onClick="onShowToast" />
+
+    </LinearLayout>
+</ScrollView>
