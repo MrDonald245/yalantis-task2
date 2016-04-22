@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.fragments;
+package eugene.yalantistask2.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -30,8 +30,8 @@ import com.melnykov.fab.FloatingActionButton;
 import java.util.List;
 
 import eugene.yalantistask2.R;
-import eugene.yalantistask2.adapters.RecyclerViewAdapter;
-import eugene.yalantistask2.models.Issue;
+import eugene.yalantistask2.utils.adapters.RecyclerViewAdapter;
+import eugene.yalantistask2.model.Issue;
 
 /**
  * Base Fragment for RecyclerView

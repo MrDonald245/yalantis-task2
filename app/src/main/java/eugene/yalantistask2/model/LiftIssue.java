@@ -14,53 +14,37 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.models;
+package eugene.yalantistask2.model;
+
+import eugene.yalantistask2.R;
 
 /**
- * Base model for each issue.
+ * Lift issue model with name and icon, which are getting form resources.
  */
-public interface IssueBase {
+public class LiftIssue extends Issue {
+
+    public LiftIssue(int likesCount, int days, String date, String address) {
+        super(likesCount, days, date, address);
+    }
 
     /**
      * Get name of issue.
      *
      * @return int resource name id.
      */
-    int getResName();
+    @Override
+    public int getResName() {
+        return R.string.lift_issue;
+    }
 
     /**
      * Get icon resource id.
      *
      * @return int resource icon id
      */
-    int getResIcon();
-
-    /**
-     * Get number this issue likes.
-     *
-     * @return int number of likes.
-     */
-    int getLikesCount();
-
-    /**
-     * Get days. Example: "-14 дiв" in RecyclerView item
-     *
-     * @return int Count of days.
-     */
-    int getDays();
-
-    /**
-     * Get date when a post was posted.
-     * Date is in String format, just because I am lazy.
-     *
-     * @return String date
-     */
-    String getDate();
-
-    /**
-     * Get address of this issue.
-     *
-     * @return String address.
-     */
-    String getAddress();
+    @Override
+    public int getResIcon() {
+        // TODO: it's not lift icon. Set original icon.
+        return R.drawable.ic_address;
+    }
 }

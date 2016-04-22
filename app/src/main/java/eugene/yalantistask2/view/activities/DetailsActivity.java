@@ -1,24 +1,28 @@
-package eugene.yalantistask2;
+package eugene.yalantistask2.view.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
-import eugene.yalantistask2.adapters.ImageAdapter;
+import eugene.yalantistask2.R;
+import eugene.yalantistask2.presenter.DetailsPresenter;
 
 public class DetailsActivity extends AppCompatActivity {
+
+    private DetailsPresenter mPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
-        setBackButton();
-        recyclerViewInit();
+        // Attach activity to presenter
+        mPresenter = new DetailsPresenter(this);
+
+        mPresenter.setBackButton();
+        mPresenter.recyclerViewInit();
     }
 
     /**
@@ -39,32 +43,12 @@ public class DetailsActivity extends AppCompatActivity {
     }
 
     /**
-     * Set back button to the activity.
+     * Detach view from Presenter before activity will be destroyed.
      */
-    private void setBackButton() {
-
-        // set back button to action bar
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        }
-    }
-
-    /**
-     * Recycler view initialization.
-     * Recycler view contents photos witch represents form arrays.xml,
-     * photo_links parameter
-     */
-    private void recyclerViewInit() {
-
-        String[] photoLinks = getResources().getStringArray(R.array.photo_links);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this,
-                RecyclerView.HORIZONTAL, false);
-
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rvPhotos);
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(new ImageAdapter(photoLinks, this));
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 
     /**

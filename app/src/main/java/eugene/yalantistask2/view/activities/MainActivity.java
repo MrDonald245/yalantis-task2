@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2;
+package eugene.yalantistask2.view.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -22,7 +22,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
@@ -30,13 +29,10 @@ import android.view.MenuItem;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import eugene.yalantistask2.adapters.ViewPagerAdapter;
-import eugene.yalantistask2.fragments.DoneFragment;
-import eugene.yalantistask2.fragments.InWorkFragment;
-import eugene.yalantistask2.fragments.NotDoneFragment;
-import eugene.yalantistask2.listeners.FloatActionButtonOnClickListener;
-import eugene.yalantistask2.listeners.NavigationItemSelectedListener;
-import eugene.yalantistask2.listeners.ToolbarNavigationOnClickListener;
+import eugene.yalantistask2.R;
+import eugene.yalantistask2.presenter.MainPresenter;
+import eugene.yalantistask2.utils.listeners.FloatActionButtonOnClickListener;
+import eugene.yalantistask2.utils.listeners.NavigationItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,11 +43,16 @@ public class MainActivity extends AppCompatActivity {
     private TabLayout mTabLayout;
     private FloatingActionButton mFloatingActionButton;
 
+    private MainPresenter mPresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Attach activity to presenter
+        mPresenter = new MainPresenter(this);
 
         // Init above fields
         initializeComponent();
@@ -60,32 +61,22 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         // Setup adapter to ViewPager with fragment to be shown on the screen
-        setupViewPager();
+        mViewPager.setAdapter(mPresenter.getViewPagerAdapter());
 
         // Set onClick listener to Float Action Bar
-        mFloatingActionButton.setOnClickListener(new FloatActionButtonOnClickListener());
+        mFloatingActionButton.setOnClickListener(
+                new FloatActionButtonOnClickListener());
 
         // Setup TabLayout with ViewPager
         mTabLayout.setupWithViewPager(mViewPager);
 
         // Add DrawerListener to DrawerLayout
-        mDrawerLayout.addDrawerListener(createActionBarDrawerToggle());
+        mDrawerLayout.addDrawerListener(
+                mPresenter.createActionBarDrawerToggle(mDrawerLayout, mToolbar));
 
         // Setup NavigationItemSelectedListener to a NavigationView
         mNavigationView.setNavigationItemSelectedListener(
                 new NavigationItemSelectedListener(mDrawerLayout));
-    }
-
-    /**
-     * Setup adapter to ViewPager
-     */
-    private void setupViewPager() {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        adapter.addFragment(new InWorkFragment(), getResources().getString(R.string.tab_in_work));
-        adapter.addFragment(new DoneFragment(), getResources().getString(R.string.tab_done));
-        adapter.addFragment(new NotDoneFragment(), getResources().getString(R.string.tab_not_done));
-
-        mViewPager.setAdapter(adapter);
     }
 
     /**
@@ -98,36 +89,6 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.view_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tabs);
         mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-    }
-
-
-    /**
-     * Create and setup ActionBarDrawerToggle
-     *
-     * @return Created ActionBarDrawerToggle
-     */
-    private ActionBarDrawerToggle createActionBarDrawerToggle() {
-        // Create toggle
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this,
-                mDrawerLayout,
-                mToolbar,
-                R.string.navigation_drawer_open,
-                R.string.navigation_drawer_close);
-
-        toggle.setDrawerIndicatorEnabled(false); // disable default icon for NavigationView
-        // in toolbar to set custom one
-        // Set custom icon
-        toggle.setHomeAsUpIndicator(R.drawable.ic_menu);
-
-        // Click Listener for navigation toolbar
-        toggle.setToolbarNavigationClickListener(
-                new ToolbarNavigationOnClickListener(mDrawerLayout));
-
-        // Synchronize the state of the drawer indicator/affordance with the linked DrawerLayout
-        toggle.syncState();
-
-        return toggle;
     }
 
 
@@ -165,4 +126,12 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    /**
+     * Detach presenter before onDestroy().
+     */
+    @Override
+    protected void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
+    }
 }

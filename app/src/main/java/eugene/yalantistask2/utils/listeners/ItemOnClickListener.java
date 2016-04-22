@@ -14,37 +14,33 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.models;
+package eugene.yalantistask2.utils.listeners;
 
-import eugene.yalantistask2.R;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+
+import eugene.yalantistask2.view.activities.DetailsActivity;
 
 /**
- * Debt issue model with name and icon, which are getting form resources.
+ * OnClick for each item in RecyclerView and ListView
  */
-public class DebtIssue extends Issue {
+public class ItemOnClickListener implements View.OnClickListener {
+    Context mContext;
 
-    public DebtIssue(int likesCount, int days, String date, String address) {
-        super(likesCount, days, date, address);
+    public ItemOnClickListener(Context context) {
+        mContext = context;
     }
 
 
     /**
-     * Get name of issue.
+     * Show details activity
      *
-     * @return int resource name id.
+     * @param v The view that was clicked.
      */
     @Override
-    public int getResName() {
-        return R.string.debt_issue;
-    }
-
-    /**
-     * Get icon resource id.
-     *
-     * @return int resource icon id
-     */
-    @Override
-    public int getResIcon() {
-        return R.drawable.ic_debt;
+    public void onClick(View v) {
+        Intent intent = new Intent(mContext, DetailsActivity.class);
+        mContext.startActivity(intent);
     }
 }

@@ -14,17 +14,19 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.models;
+package eugene.yalantistask2.model;
 
 import eugene.yalantistask2.R;
 
 /**
- * Dismantling issue model with name and icon, which are getting form resources.
+ * Debt issue model with name and icon, which are getting form resources.
  */
-public class DismantlingIssue extends Issue {
-    public DismantlingIssue(int likesCount, int days, String date, String address) {
+public class DebtIssue extends Issue {
+
+    public DebtIssue(int likesCount, int days, String date, String address) {
         super(likesCount, days, date, address);
     }
+
 
     /**
      * Get name of issue.
@@ -33,7 +35,7 @@ public class DismantlingIssue extends Issue {
      */
     @Override
     public int getResName() {
-        return R.string.dismantling_issue;
+        return R.string.debt_issue;
     }
 
     /**
@@ -43,7 +45,6 @@ public class DismantlingIssue extends Issue {
      */
     @Override
     public int getResIcon() {
-        // TODO: it's not lift icon. Set original icon.
-        return R.drawable.ic_doc;
+        return R.drawable.ic_debt;
     }
 }

@@ -14,19 +14,33 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.fragments;
+package eugene.yalantistask2.view.fragments;
 
-import java.util.Arrays;
 import java.util.List;
 
-import eugene.yalantistask2.models.DebtIssue;
-import eugene.yalantistask2.models.DismantlingIssue;
-import eugene.yalantistask2.models.Issue;
+import eugene.yalantistask2.model.Issue;
+import eugene.yalantistask2.presenter.DoneFragmentPresenter;
 
 /**
  * Shows screen with RecyclerView that contain all of data in "done" status
  */
 public class DoneFragment extends RecyclerFragmentBase {
+
+    private DoneFragmentPresenter mPresenter;
+
+    public DoneFragment() {
+        mPresenter = new DoneFragmentPresenter(this);
+    }
+
+    /**
+     * Called when the fragment is no longer in use.  This is called
+     * after {@link #onStop()} and before {@link #onDetach()}.
+     */
+    @Override
+    public void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
+    }
 
     /**
      * Set data for recycler view.
@@ -35,14 +49,6 @@ public class DoneFragment extends RecyclerFragmentBase {
      */
     @Override
     protected List<Issue> recyclerViewData() {
-        Issue[] issues = new Issue[]{
-                new DismantlingIssue(43, 20, "14.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42")
-        };
-
-        return Arrays.asList(issues);
+        return mPresenter.getIssues();
     }
 }

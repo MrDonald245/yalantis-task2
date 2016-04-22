@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.adapters;
+package eugene.yalantistask2.utils.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -22,7 +22,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -30,8 +29,8 @@ import com.squareup.picasso.Picasso;
 import java.util.List;
 
 import eugene.yalantistask2.R;
-import eugene.yalantistask2.listeners.ItemOnClickListener;
-import eugene.yalantistask2.models.Issue;
+import eugene.yalantistask2.utils.listeners.ItemOnClickListener;
+import eugene.yalantistask2.model.Issue;
 
 /**
  * Adapter for ListView in "not done" status tab

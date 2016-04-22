@@ -14,21 +14,22 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.fragments;
+package eugene.yalantistask2.view.fragments;
 
-import java.util.Arrays;
 import java.util.List;
 
-import eugene.yalantistask2.models.DebtIssue;
-import eugene.yalantistask2.models.DismantlingIssue;
-import eugene.yalantistask2.models.Issue;
-import eugene.yalantistask2.models.LiftIssue;
-import eugene.yalantistask2.models.SanitaryIssue;
+import eugene.yalantistask2.model.Issue;
+import eugene.yalantistask2.presenter.InWorkFragmentPresenter;
 
 /**
  * Shows screen with RecyclerView that contain all of data in "work" status
  */
 public class InWorkFragment extends RecyclerFragmentBase {
+    private InWorkFragmentPresenter mPresenter;
+
+    public InWorkFragment() {
+        mPresenter = new InWorkFragmentPresenter(this);
+    }
 
     /**
      * Set data for recycler view.
@@ -37,13 +38,16 @@ public class InWorkFragment extends RecyclerFragmentBase {
      */
     @Override
     protected List<Issue> recyclerViewData() {
-        Issue[] issues = new Issue[]{
-                new DismantlingIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new LiftIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new SanitaryIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42")
-        };
+        return mPresenter.getIssues();
+    }
 
-        return Arrays.asList(issues);
+    /**
+     * Called when the fragment is no longer in use.  This is called
+     * after {@link #onStop()} and before {@link #onDetach()}.
+     */
+    @Override
+    public void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

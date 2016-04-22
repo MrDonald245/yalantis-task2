@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.listeners;
+package eugene.yalantistask2.utils.listeners;
 
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;

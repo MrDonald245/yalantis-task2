@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.models;
+package eugene.yalantistask2.model;
 
 /**
  * Basic, abstract model with partly realization of IssueBase.

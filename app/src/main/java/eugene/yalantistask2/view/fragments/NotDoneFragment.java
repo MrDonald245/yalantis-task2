@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.fragments;
+package eugene.yalantistask2.view.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -25,19 +25,23 @@ import android.widget.ListView;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import java.util.Arrays;
 import java.util.List;
 
 import eugene.yalantistask2.R;
-import eugene.yalantistask2.adapters.ListViewAdapter;
-import eugene.yalantistask2.models.DebtIssue;
-import eugene.yalantistask2.models.DismantlingIssue;
-import eugene.yalantistask2.models.Issue;
+import eugene.yalantistask2.presenter.NotDoneFragmentPresenter;
+import eugene.yalantistask2.utils.adapters.ListViewAdapter;
+import eugene.yalantistask2.model.Issue;
 
 /**
  * Shows screen with RecyclerView that contain all of data in "not done" status
  */
 public class NotDoneFragment extends Fragment {
+
+    private NotDoneFragmentPresenter mPresenter;
+
+    public NotDoneFragment() {
+        mPresenter = new NotDoneFragmentPresenter(this);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -84,13 +88,16 @@ public class NotDoneFragment extends Fragment {
      * @return List<Issue> object with issues "in work".
      */
     private List<Issue> getIssues() {
-        Issue[] issues = new Issue[]{
-                new DismantlingIssue(43, 20, "14.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42"),
-                new DebtIssue(43, 19, "15.06.2015", "Вул. Вадима Гетьмана, 42")
-        };
+        return mPresenter.getIssues();
+    }
 
-        return Arrays.asList(issues);
+    /**
+     * Called when the fragment is no longer in use.  This is called
+     * after {@link #onStop()} and before {@link #onDetach()}.
+     */
+    @Override
+    public void onDestroy() {
+        mPresenter.detachView();
+        super.onDestroy();
     }
 }

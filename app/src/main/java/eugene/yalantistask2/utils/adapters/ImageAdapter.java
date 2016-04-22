@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.adapters;
+package eugene.yalantistask2.utils.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

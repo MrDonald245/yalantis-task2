@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package eugene.yalantistask2.adapters;
+package eugene.yalantistask2.utils.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
