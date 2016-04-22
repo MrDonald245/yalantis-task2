@@ -44,20 +44,14 @@
                 android:gravity="bottom"
                 android:orientation="horizontal">
 
-                <!-- Likes icon -->
-                <ImageView
-                    android:id="@+id/iv_likes_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="3dp" />
-
                 <!-- Likes value -->
                 <TextView
                     style="@style/recycler_likes_value"
                     android:id="@+id/tv_likes_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp" />
+                    android:drawableLeft="@drawable/ic_thumb_gray"
+                    android:drawablePadding="8dp"/>
 
             </LinearLayout>
 

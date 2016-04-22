@@ -56,7 +56,6 @@ public class RecyclerViewAdapter
             super(itemView);
 
             iconIssue = (ImageView) itemView.findViewById(R.id.iv_icon_issue);
-            likesIcon = (ImageView) itemView.findViewById(R.id.iv_likes_icon);
             likesValue = (TextView) itemView.findViewById(R.id.tv_likes_value);
             headerIssue = (TextView) itemView.findViewById(R.id.tv_header_issue);
             address = (TextView) itemView.findViewById(R.id.tv_address);
@@ -96,13 +95,6 @@ public class RecyclerViewAdapter
                 .resizeDimen(R.dimen.issue_icon_width, R.dimen.issue_icon_height)
                 .centerInside()
                 .into(holder.iconIssue);
-
-        // Bind likes icon via Picasso lib
-        Picasso.with(holder.itemView.getContext())
-                .load(R.drawable.ic_thumb_gray)
-                .resizeDimen(R.dimen.issue_likes_width, R.dimen.issue_likes_height)
-                .centerInside()
-                .into(holder.likesIcon);
 
         // Bind likes value in text field
         holder.likesValue.setText(Integer.toString(issue.getLikesCount()));

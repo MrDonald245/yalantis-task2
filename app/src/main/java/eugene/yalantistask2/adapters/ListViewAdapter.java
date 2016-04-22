@@ -79,7 +79,6 @@ public class ListViewAdapter extends ArrayAdapter<Issue> {
      */
     private View setupViewItem(View convertView, Issue issueItem) {
         ImageView iconIssue = (ImageView) convertView.findViewById(R.id.iv_icon_issue);
-        ImageView likesIcon = (ImageView) convertView.findViewById(R.id.iv_likes_icon);
         TextView likesValue = (TextView) convertView.findViewById(R.id.tv_likes_value);
         TextView headerIssue = (TextView) convertView.findViewById(R.id.tv_header_issue);
         TextView address = (TextView) convertView.findViewById(R.id.tv_address);
@@ -94,13 +93,6 @@ public class ListViewAdapter extends ArrayAdapter<Issue> {
                 .resizeDimen(R.dimen.issue_icon_width, R.dimen.issue_icon_height)
                 .centerInside()
                 .into(iconIssue);
-
-        // Bind likes icon via Picasso lib
-        Picasso.with(getContext())
-                .load(R.drawable.ic_thumb_gray)
-                .resizeDimen(R.dimen.issue_likes_width, R.dimen.issue_likes_height)
-                .centerInside()
-                .into(likesIcon);
 
         // Bind likes value in text field
         likesValue.setText(Integer.toString(issueItem.getLikesCount()));
