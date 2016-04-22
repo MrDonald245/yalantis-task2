@@ -16,24 +16,9 @@
 
 package eugene.yalantistask2.fragments;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.melnykov.fab.FloatingActionButton;
-
 import java.util.Arrays;
 import java.util.List;
 
-import eugene.yalantistask2.R;
-import eugene.yalantistask2.adapters.RecyclerViewAdapter;
-import eugene.yalantistask2.listeners.FloatActionButtonOnClickListener;
 import eugene.yalantistask2.models.DebtIssue;
 import eugene.yalantistask2.models.DismantlingIssue;
 import eugene.yalantistask2.models.Issue;
@@ -43,63 +28,15 @@ import eugene.yalantistask2.models.SanitaryIssue;
 /**
  * Shows screen with RecyclerView that contain all of data in "work" status
  */
-public class InWorkFragment extends Fragment {
-
-    private FloatingActionButton mFloatingActionButton;
-
-    public InWorkFragment() {}
-
-    /*public InWorkFragment(FloatingActionButton fab) {
-        mFloatingActionButton = fab;
-    }*/
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.recycler_fragment, container, false);
-    }
+public class InWorkFragment extends RecyclerFragmentBase {
 
     /**
-     * When view were created, setup RecyclerView.
+     * Set data for recycler view.
      *
-     * @param view               root view.
-     * @param savedInstanceState previous saved state.
+     * @return List<Issue> data for recycler view.
      */
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        setupRecyclerView(view);
-    }
-
-    /**
-     * Setup recycler view from view that was inflated in onCreateView() method
-     *
-     * @param view from onCreateView method.
-     */
-    private void setupRecyclerView(View view) {
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerView);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.setAdapter(new RecyclerViewAdapter(getIssues()));
-
-        // Attach FAB to RecycleView to provide animation in further
-        FloatingActionButton fab = (FloatingActionButton) getActivity().findViewById(R.id.fab);
-        fab.attachToRecyclerView(recyclerView);
-    }
-
-    /**
-     * Get data of "in work" issues.
-     * needed to provide List<Issue> for InWorkRecyclerViewAdapter class.
-     *
-     * @return List<Issue> object with issues "in work".
-     */
-    private List<Issue> getIssues() {
+    protected List<Issue> recyclerViewData() {
         Issue[] issues = new Issue[]{
                 new DismantlingIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42"),
                 new DebtIssue(43, 14, "21.06.2015", "Вул. Вадима Гетьмана, 42"),
