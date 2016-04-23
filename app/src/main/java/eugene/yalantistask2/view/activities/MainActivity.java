@@ -29,6 +29,7 @@ import android.view.MenuItem;
 
 import com.melnykov.fab.FloatingActionButton;
 
+import butterknife.Bind;
 import eugene.yalantistask2.R;
 import eugene.yalantistask2.presenter.MainPresenter;
 import eugene.yalantistask2.utils.listeners.FloatActionButtonOnClickListener;
@@ -36,12 +37,12 @@ import eugene.yalantistask2.utils.listeners.NavigationItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Toolbar mToolbar;
-    private DrawerLayout mDrawerLayout;
-    private NavigationView mNavigationView;
-    private ViewPager mViewPager;
-    private TabLayout mTabLayout;
-    private FloatingActionButton mFloatingActionButton;
+    private @Bind(R.id.toolbar) Toolbar mToolbar;
+    private @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    private @Bind(R.id.nav_view) NavigationView mNavigationView;
+    private @Bind(R.id.view_pager) ViewPager mViewPager;
+    private @Bind(R.id.tabs) TabLayout mTabLayout;
+    private @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
 
     private MainPresenter mPresenter;
 
@@ -53,9 +54,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Attach activity to presenter
         mPresenter = new MainPresenter(this);
-
-        // Init above fields
-        initializeComponent();
 
         // Setup a toolbar
         setSupportActionBar(mToolbar);
@@ -78,19 +76,6 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(
                 new NavigationItemSelectedListener(mDrawerLayout));
     }
-
-    /**
-     * Initialize all necessary fields from xml layout
-     */
-    private void initializeComponent() {
-        mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
-        mViewPager = (ViewPager) findViewById(R.id.view_pager);
-        mTabLayout = (TabLayout) findViewById(R.id.tabs);
-        mFloatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
-    }
-
 
     @Override
     public void onBackPressed() {
