@@ -29,7 +29,8 @@ import android.view.MenuItem;
 
 import com.melnykov.fab.FloatingActionButton;
 
-import butterknife.Bind;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import eugene.yalantistask2.R;
 import eugene.yalantistask2.presenter.MainPresenter;
 import eugene.yalantistask2.utils.listeners.FloatActionButtonOnClickListener;
@@ -37,12 +38,12 @@ import eugene.yalantistask2.utils.listeners.NavigationItemSelectedListener;
 
 public class MainActivity extends AppCompatActivity {
 
-    private @Bind(R.id.toolbar) Toolbar mToolbar;
-    private @Bind(R.id.drawer_layout) DrawerLayout mDrawerLayout;
-    private @Bind(R.id.nav_view) NavigationView mNavigationView;
-    private @Bind(R.id.view_pager) ViewPager mViewPager;
-    private @Bind(R.id.tabs) TabLayout mTabLayout;
-    private @Bind(R.id.fab) FloatingActionButton mFloatingActionButton;
+    @BindView(R.id.toolbar) Toolbar mToolbar;
+    @BindView(R.id.drawer_layout) DrawerLayout mDrawerLayout;
+    @BindView(R.id.nav_view) NavigationView mNavigationView;
+    @BindView(R.id.view_pager) ViewPager mViewPager;
+    @BindView(R.id.tabs) TabLayout mTabLayout;
+    @BindView(R.id.fab) FloatingActionButton mFloatingActionButton;
 
     private MainPresenter mPresenter;
 
@@ -51,6 +52,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // Field and method binding for Android views
+        ButterKnife.bind(this);
 
         // Attach activity to presenter
         mPresenter = new MainPresenter(this);
